@@ -29,8 +29,8 @@ public:
 			std::ostringstream angle;
 			angle << (float)req.angle;
 			std::string im_name = (std::string)req.path + angle.str()+ ".png";
-			std::cout<<"Image saved in '"<<im_name<<"'\n";
-			if(cv::imwrite (im_name, picture) || picture.empty()){ 
+			if(cv::imwrite (im_name, picture) && !picture.empty()){ 
+				std::cout<<"Image saved in '"<<im_name<<"'\n";
 				res.result = 1;
 			}else{
 				res.result = 2;
